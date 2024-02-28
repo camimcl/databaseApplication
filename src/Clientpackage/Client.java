@@ -6,10 +6,17 @@ public class Client {
     private String gender;
     private int dateOfBirth;
 
+    
     public String getName() {
         return name;
     }
    
+    public Client(String name, String email, String gender) {
+        this.name = name;
+        this.email = email;
+        this.gender = gender;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
