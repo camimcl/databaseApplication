@@ -13,15 +13,12 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
-
-import com.db4o.Db4o;
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
 import Clientpackage.Client;
+import Model.Db4oManager;
 
 public class TelaDeCadastroController implements Initializable {
     
@@ -35,15 +32,11 @@ public class TelaDeCadastroController implements Initializable {
     
     @FXML
     private ChoiceBox<String> choiceBox;
-    private String[]Gender ={"FEMININO","MASCULINO","OUTRO"};
     @FXML
     private DatePicker dateOfBirthContainer;
 
     @FXML
     private TextField emailContainer;
-
-    @FXML
-    private ChoiceBox<?> genderContainer;
 
     @FXML
     private TextField nameContainer;
@@ -56,7 +49,28 @@ public class TelaDeCadastroController implements Initializable {
   
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        choiceBox.getItems().addAll(Gender);
+        choiceBox.getItems().addAll("FEMININO","MASCULINO","OUTRO");
+    }
+    public void fazerCadastro(ActionEvent event){
+        String name = nameContainer.getText();
+        String email = emailContainer.getText();
+        String gender = choiceBox.getValue();
+        
+        Client client = new Client(name,email);
+        client.setGender(gender);
+        
+        
+        Db4oManager dbManager = new Db4oManager("database.dbo");
+        dbManager.inserirCliente(client);
+        dbManager.fecharConexao();
+    }
+    public void mostrarClientes(ActionEvent event){     
+        Db4oManager dbManager = new Db4oManager("database.dbo");        
+        List<Client> clientes = dbManager.verTodosOsClientes();
+        dbManager.fecharConexao();
+        for (Client client : clientes) {
+            System.out.println("nome: "+client.getName()+"\n"+"Email: "+client.getEmail()+"\n"+"Gender:"+client.getGender());
+        }
     }
     
     // @FXML
