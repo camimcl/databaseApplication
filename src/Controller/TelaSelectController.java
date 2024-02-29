@@ -24,22 +24,13 @@ public class TelaSelectController implements Initializable {
 
     
     @FXML
-    void fazerSelect(ActionEvent event) throws IOException {
-        Db4oManager dbManager = new Db4oManager("database.dbo");
-        List<Client> clientes = dbManager.verTodosOsClientes();
-        int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
-        Client clienteSelecionado = clientes.get(indiceSelecionado);
-        if (clienteSelecionado != null) {
-            switchToTelaDetalhada(event);
-            abrirTelaDetalhada(clienteSelecionado);
-        }
-    }
      public void switchToTelaDetalhada(ActionEvent event) throws IOException{
      Parent root = FXMLLoader.load(getClass().getResource("../view/TelaDetalhada.fxml"));
      Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
      Scene scene = new Scene(root);
      stage.setScene(scene);
      stage.show();
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,8 +40,14 @@ public class TelaSelectController implements Initializable {
             choiceBoxSelect.getItems().addAll(client.getName());
         }
     }
-    public void abrirTelaDetalhada(Client clientSelecionado){
-        
+    public void abrirTelaDetalhada(ActionEvent event) throws IOException{
+        Db4oManager dbManager = new Db4oManager("database.dbo");
+        List<Client> clientes = dbManager.verTodosOsClientes();
+        int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
+        Client clienteSelecionado = clientes.get(indiceSelecionado);
+        if (clienteSelecionado !=null) {
+            switchToTelaDetalhada(event);
+        }
     }
   
 

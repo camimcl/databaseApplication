@@ -73,29 +73,4 @@ public class TelaDeCadastroController implements Initializable {
         }
     }
     
-    // @FXML
-    // Client client= new Client();
-    // ObjectContainer db;
-    // @SuppressWarnings("deprecation")
-    // public void fazerCadastro(ActionEvent event) {
-    //     db = Db4o.openFile("database.dbo");
-    //     String name = nameContainer.getText();
-    //     // String password = passwordContainer.getText();
-    //     String email = emailContainer.getText();
-    //     client.setEmail(email);
-    //     client.setName(name);
-
-    //     db.store(client);
-    //     db.close();
-    //     ObjectSet<Client>lista;
-    //     db= Db4o.openFile("database.dbo");
-    //     lista= db.query(Client.class);
-    //     while (lista.hasNext()) {
-    //         client = lista.next();
-    //         System.out.println("################");
-    //         System.out.println(client.getName());
-    //         System.out.println(client.getEmail());
-    //     }
-        
-    // }
 }
