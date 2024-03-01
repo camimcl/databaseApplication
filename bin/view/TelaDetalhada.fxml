@@ -45,8 +45,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="227.0" layoutY="282.0" mnemonicParsing="false" onAction="#fazerUpdate" text="Update" />
-            <Button layoutX="323.0" layoutY="282.0" mnemonicParsing="false" onAction="#fazerDelete" text="Delete" />
+            <Button layoutX="227.0" layoutY="282.0" mnemonicParsing="false" onAction="#voltar" text="voltar" />
          </children></Pane>
    </children>
 </StackPane>

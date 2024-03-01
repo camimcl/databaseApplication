@@ -45,6 +45,8 @@
             <ChoiceBox fx:id="choiceBoxSelect" layoutX="213.0" layoutY="151.0" prefWidth="150.0" />
             <Button layoutX="272.0" layoutY="238.0" mnemonicParsing="false" onAction="#abrirTelaDetalhada" text="OK" />
             <Label layoutX="269.0" layoutY="93.0" prefHeight="10.0" prefWidth="38.0" text="SELECT" />
+            <Button layoutX="307.0" layoutY="238.0" mnemonicParsing="false" onAction="#fazerUpdate" text="UPDATE" />
+            <Button layoutX="272.0" layoutY="269.0" mnemonicParsing="false" onAction="#fazerDelete" text="DELETE" />
          </children>
       </Pane>
    </children>

@@ -27,17 +27,28 @@ public class TelaSelectController implements Initializable {
     }
     public void abrirTelaDetalhada(ActionEvent event) throws IOException { 
         int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
-        System.out.println("a:"+indiceSelecionado);
         if(!choiceBoxSelect.getItems().isEmpty() && indiceSelecionado>=0){
         Db4oManager dbManager = new Db4oManager("database.dbo"); //pega o indice do cliente escolhido no choicebox para mandar a informacao para a proxima tela 
         List<Client> clientes = dbManager.verTodosOsClientes();
         Client clienteSelecionado = clientes.get(indiceSelecionado);
         if (clienteSelecionado !=null) {
-            controllerPrincipal.abrirTelaDetalhada(event, clienteSelecionado,dbManager);//aciona o metodo do controller principal para trocar de tela
+            controllerPrincipal.abrirTelaDetalhada(event, clienteSelecionado);//aciona o metodo do controller principal para trocar de tela
         }
     }
+    }
+    @FXML
+    void fazerDelete(ActionEvent event) {
 
     }
-  
-
+    TelaUpdateClienteController telaUpdateClienteController = new TelaUpdateClienteController();
+    @FXML
+    void fazerUpdate(ActionEvent event) throws IOException {
+        int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
+        if (indiceSelecionado >-1) {
+        controllerPrincipal.switchScene(event, "../view/TelaUpdateCliente.fxml");
+        telaUpdateClienteController.fazerAtualizacao(event, indiceSelecionado);
+    }
 }
+}
+
+

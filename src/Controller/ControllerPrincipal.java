@@ -3,7 +3,6 @@ package Controller;
 import java.io.IOException;
 
 import Clientpackage.Client;
-import Model.Db4oManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,13 +12,13 @@ import javafx.stage.Stage;
 
 public class ControllerPrincipal {
 
-    public void abrirTelaDetalhada(ActionEvent event,Client clienteSelecionado,Db4oManager dbManager){
+    public void abrirTelaDetalhada(ActionEvent event,Client clienteSelecionado){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TelaDetalhada.fxml"));
             Parent root = loader.load();
             
             TelaDetalhadaController controller = loader.getController();
-            controller.inicializarCliente(clienteSelecionado,dbManager);
+            controller.inicializarCliente(clienteSelecionado);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

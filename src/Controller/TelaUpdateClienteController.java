@@ -29,16 +29,18 @@ public class TelaUpdateClienteController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         choiceBox.getItems().addAll("FEMININO","MASCULINO","OUTRO");
     }
+    
     @FXML
-    void fazerAtualizacao(ActionEvent event) throws IOException {
+    void fazerAtualizacao(ActionEvent event,int clienteSelecionado) throws IOException {
         String novoNome = nameContainer.getText();
         String novoEmail = emailContainer.getText();
         String novoGenero = choiceBox.getValue();
 
         Client clienteAtualizado = new Client(novoNome, novoEmail, novoGenero);
+
         if (clienteAtualizado!= null){
             ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
-            dbManager.updateCliente(clienteAtualizado);
+            dbManager.updateCliente(clienteAtualizado,clienteSelecionado);
             controllerPrincipal.switchScene(event,"../view/TelaSelect.fxml");
         }
     }

@@ -20,21 +20,16 @@ public class TelaDetalhadaController {
     @FXML
     private Label caixaNome;
     private Client cliente;
-    private Db4oManager dbManager;
-    @FXML
-    void fazerDelete(ActionEvent event) {
-        
+    
+    ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
+    
+    public void voltar(ActionEvent event) throws IOException{
+        controllerPrincipal.switchScene(event,"../view/TelaSelect.fxml");
     }
-    @FXML
-    void fazerUpdate(ActionEvent event) throws IOException {
-        ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
-        controllerPrincipal.abrirTelaDetalhada(event, cliente, dbManager);
-    }
+   
 
-  
-    public void inicializarCliente(Client cliente,Db4oManager dbManager) {
+    public void inicializarCliente(Client cliente) {
         this.cliente=cliente;
-        this.dbManager = dbManager;
         caixaNome.setText(cliente.getName());
         caixaEmail.setText(cliente.getEmail());
         caixaGenero.setText(cliente.getGender());

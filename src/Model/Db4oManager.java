@@ -21,10 +21,10 @@ public void fecharConexao(){
 public void inserirCliente(Client client){
     db.store(client);
 }
-public void updateCliente(Client clientAtualizado){
-    ObjectSet<Client> result = db.queryByExample(new Client(clientAtualizado.getName(), clientAtualizado.getEmail(), clientAtualizado.getGender()));
-    if (result.hasNext()) {
-        Client clienteAntigo = result.next();
+public void updateCliente(Client clientAtualizado, int clientSelecionado){
+        List<Client> clientes = verTodosOsClientes();
+        Client clienteAntigo = clientes.get(clientSelecionado);   
+        clienteAntigo = new Client(clientAtualizado.getName(), clientAtualizado.getEmail(), clientAtualizado.getGender());
         clienteAntigo.setName(clientAtualizado.getName());
         clienteAntigo.setEmail(clientAtualizado.getEmail());
         clienteAntigo.setGender(clientAtualizado.getGender());
@@ -33,10 +33,8 @@ public void updateCliente(Client clientAtualizado){
             clienteAntigo.setGender(clientAtualizado.getGender());
         }
     }
-     else {
-        System.out.println("Cliente não encontrado para atualização.");
-    }
-}
+    
+
 public void deleteCliente(Client client){}
 
 public List<Client>verTodosOsClientes(){
