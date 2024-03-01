@@ -69,7 +69,7 @@
                   <Label layoutX="368.0" layoutY="182.0" text="Gênero" />
                   <DatePicker fx:id="dateOfBirthContainer" layoutX="368.0" layoutY="123.0" prefHeight="26.0" prefWidth="138.0" />
                   <ChoiceBox fx:id="choiceBox" layoutX="368.0" layoutY="200.0" prefHeight="26.0" prefWidth="138.0" />
-                  <Button layoutX="463.0" layoutY="277.0" mnemonicParsing="false" onAction="#mostrarClientes" text="mostrar clientes" />
+                  
                </children>
             </Pane>
          </children>

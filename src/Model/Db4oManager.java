@@ -22,10 +22,20 @@ public void inserirCliente(Client client){
     db.store(client);
 }
 public void updateCliente(Client clientAtualizado){
-    Client clienteAntigo = (Client)db.queryByExample(new Client(clientAtualizado.getName(), clientAtualizado.getEmail())).next();
-    clienteAntigo.setName(clientAtualizado.getName());
-    clienteAntigo.setEmail(clientAtualizado.getEmail());
-    db.store(clienteAntigo);
+    ObjectSet<Client> result = db.queryByExample(new Client(clientAtualizado.getName(), clientAtualizado.getEmail(), clientAtualizado.getGender()));
+    if (result.hasNext()) {
+        Client clienteAntigo = result.next();
+        clienteAntigo.setName(clientAtualizado.getName());
+        clienteAntigo.setEmail(clientAtualizado.getEmail());
+        clienteAntigo.setGender(clientAtualizado.getGender());
+        db.store(clienteAntigo);
+        if(clientAtualizado.getGender()!=null){
+            clienteAntigo.setGender(clientAtualizado.getGender());
+        }
+    }
+     else {
+        System.out.println("Cliente não encontrado para atualização.");
+    }
 }
 public void deleteCliente(Client client){}
 

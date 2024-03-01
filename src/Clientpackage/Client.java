@@ -7,10 +7,16 @@ public class Client {
     private int dateOfBirth;
 
     
+    
+    public Client(String name, String email, String gender) {
+        this.name = name;
+        this.email = email;
+        this.gender = gender;
+    }
+
     public String getName() {
         return name;
     }
-
 
     public void setName(String name) {
         this.name = name;
@@ -31,9 +37,7 @@ public class Client {
     public void setPassword(String password) {
         this.password = password;
     }
-
    
-
     public int getDateOfBirth() {
         return dateOfBirth;
     }
@@ -50,9 +54,4 @@ public class Client {
         this.dateOfBirth = dateOfBirth;
     }
     
-    public Client(String name, String email) {
-        this.name = name;
-        this.email = email;
-
-    }
 }
