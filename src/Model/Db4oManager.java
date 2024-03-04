@@ -22,17 +22,17 @@ public void inserirCliente(Client client){
     db.store(client);
 }
 public void updateCliente(Client clientAtualizado, int clientSelecionado){
-        List<Client> clientes = verTodosOsClientes();
-        Client clienteAntigo = clientes.get(clientSelecionado);   
-        clienteAntigo = new Client(clientAtualizado.getName(), clientAtualizado.getEmail(), clientAtualizado.getGender());
-        clienteAntigo.setName(clientAtualizado.getName());
-        clienteAntigo.setEmail(clientAtualizado.getEmail());
-        clienteAntigo.setGender(clientAtualizado.getGender());
-        db.store(clienteAntigo);
-        if(clientAtualizado.getGender()!=null){
-            clienteAntigo.setGender(clientAtualizado.getGender());
-        }
-    }
+    List<Client> clientes = verTodosOsClientes();
+    Client clienteAntigo = clientes.get(clientSelecionado);
+    clienteAntigo.setName(clientAtualizado.getName()); 
+
+    db.store(clienteAntigo);
+    // if(clientAtualizado.getGender()!=null){
+    //     clienteAntigo.setGender(clientAtualizado.getGender());
+    // }
+}
+    
+
     
 
 public void deleteCliente(Client client){}

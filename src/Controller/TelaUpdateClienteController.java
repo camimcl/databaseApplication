@@ -13,37 +13,38 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 public class TelaUpdateClienteController implements Initializable {
-
-    @FXML
-    private ChoiceBox<String> choiceBox;
-
-    @FXML
-    private TextField emailContainer;
-
-    @FXML
-    private TextField nameContainer;
-    
-    private Db4oManager dbManager;
-    
+    ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         choiceBox.getItems().addAll("FEMININO","MASCULINO","OUTRO");
     }
+    @FXML
+    private ChoiceBox<String> choiceBox;
     
     @FXML
-    void fazerAtualizacao(ActionEvent event,int clienteSelecionado) throws IOException {
+    private TextField emailContainer;
+    
+    @FXML
+    private TextField nameContainer;
+    
+    @FXML 
+    public int receberCliente(int clienteSelecionado){
+        return clienteSelecionado;
+    }
+    @FXML
+    void fazerAtualizacao(ActionEvent event) throws IOException {
+        Db4oManager dbManager = new Db4oManager("database.dbo");
         String novoNome = nameContainer.getText();
         String novoEmail = emailContainer.getText();
         String novoGenero = choiceBox.getValue();
 
         Client clienteAtualizado = new Client(novoNome, novoEmail, novoGenero);
-
-        if (clienteAtualizado!= null){
-            ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
-            dbManager.updateCliente(clienteAtualizado,clienteSelecionado);
+            dbManager.updateCliente(clienteAtualizado,receberCliente(0));
+            dbManager.fecharConexao();
             controllerPrincipal.switchScene(event,"../view/TelaSelect.fxml");
-        }
+
     }
 
 }
+
 

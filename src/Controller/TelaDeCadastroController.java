@@ -38,6 +38,7 @@ public class TelaDeCadastroController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         choiceBox.getItems().addAll("FEMININO","MASCULINO","OUTRO");
     }
+    Db4oManager dbManager = new Db4oManager("database.dbo");
 
     public void fazerCadastro(ActionEvent event) throws IOException{
         String name = nameContainer.getText();
@@ -46,7 +47,6 @@ public class TelaDeCadastroController implements Initializable {
         
         Client client = new Client(name,email,gender);
       
-        Db4oManager dbManager = new Db4oManager("database.dbo");
         dbManager.inserirCliente(client);
         dbManager.fecharConexao();
         

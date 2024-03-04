@@ -16,10 +16,10 @@ public class TelaSelectController implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBoxSelect;
     ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
+    Db4oManager dbManager = new Db4oManager("database.dbo"); //pega o indice do cliente escolhido no choicebox para mandar a informacao para a proxima tela 
     
     @Override
     public void initialize(URL location, ResourceBundle resources) { // inicializando a choicebox com os nomes dos clientes ja registrados 
-        Db4oManager dbManager = new Db4oManager("database.dbo");
         List<Client> clientes = dbManager.verTodosOsClientes();
         for (Client client : clientes) {
             choiceBoxSelect.getItems().addAll(client.getName());
@@ -28,7 +28,6 @@ public class TelaSelectController implements Initializable {
     public void abrirTelaDetalhada(ActionEvent event) throws IOException { 
         int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
         if(!choiceBoxSelect.getItems().isEmpty() && indiceSelecionado>=0){
-        Db4oManager dbManager = new Db4oManager("database.dbo"); //pega o indice do cliente escolhido no choicebox para mandar a informacao para a proxima tela 
         List<Client> clientes = dbManager.verTodosOsClientes();
         Client clienteSelecionado = clientes.get(indiceSelecionado);
         if (clienteSelecionado !=null) {
@@ -45,9 +44,10 @@ public class TelaSelectController implements Initializable {
     void fazerUpdate(ActionEvent event) throws IOException {
         int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
         if (indiceSelecionado >-1) {
-        controllerPrincipal.switchScene(event, "../view/TelaUpdateCliente.fxml");
-        telaUpdateClienteController.fazerAtualizacao(event, indiceSelecionado);
-    }
+            telaUpdateClienteController.receberCliente(indiceSelecionado);
+            controllerPrincipal.switchScene(event, "../view/TelaUpdateCliente.fxml");
+        }
+       
 }
 }
 
