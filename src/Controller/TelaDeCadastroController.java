@@ -50,7 +50,7 @@ public class TelaDeCadastroController implements Initializable {
         dbManager.inserirCliente(client);
         dbManager.fecharConexao();
         
-        controllerPrincipal.switchScene(event, "../view/TelaSelect.fxml");
+        controllerPrincipal.abrirTelaSelect(event);
     }
         
         // para verificar se ta registrando

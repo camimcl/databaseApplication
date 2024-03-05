@@ -12,28 +12,53 @@ import javafx.stage.Stage;
 
 public class ControllerPrincipal {
 
-    public void abrirTelaDetalhada(ActionEvent event,Client clienteSelecionado){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TelaDetalhada.fxml"));
-            Parent root = loader.load();
-            
-            TelaDetalhadaController controller = loader.getController();
-            controller.inicializarCliente(clienteSelecionado);
+    public void abrirTelaDetalhada(ActionEvent event,Client clienteSelecionado) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TelaDetalhada.fxml"));
+        Parent root = loader.load();
+        
+        TelaDetalhadaController controller = loader.getController();
+        controller.inicializarCliente(clienteSelecionado);
 
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    public void abrirTelaUpdate(ActionEvent event, Client clienteSelecionado) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TelaUpdateCliente.fxml"));
+        Parent root = loader.load();
+
+        TelaUpdateClienteController controller = loader.getController();
+        controller.receberCliente(clienteSelecionado);
+    
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    public void abrirTelaCadastro(ActionEvent event) throws IOException{ 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TelaDeCadastro.fxml"));
+        Parent root = loader.load();
+
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     
-    public void switchScene(ActionEvent event,String caminhoTela) throws IOException{
-     Parent root = FXMLLoader.load(getClass().getResource(caminhoTela));
-     Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-     Scene scene = new Scene(root);
-     stage.setScene(scene);
-     stage.show();
+
+    public void abrirTelaSelect(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TelaSelect.fxml"));
+        Parent root = loader.load();
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

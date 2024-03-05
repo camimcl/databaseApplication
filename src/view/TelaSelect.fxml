@@ -37,16 +37,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaSelectController">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ChoiceBox fx:id="choiceBoxSelect" layoutX="213.0" layoutY="151.0" prefWidth="150.0" />
-            <Button layoutX="272.0" layoutY="238.0" mnemonicParsing="false" onAction="#abrirTelaDetalhada" text="OK" />
-            <Label layoutX="269.0" layoutY="93.0" prefHeight="10.0" prefWidth="38.0" text="SELECT" />
-            <Button layoutX="307.0" layoutY="238.0" mnemonicParsing="false" onAction="#fazerUpdate" text="UPDATE" />
-            <Button layoutX="272.0" layoutY="269.0" mnemonicParsing="false" onAction="#fazerDelete" text="DELETE" />
+            <Button layoutX="69.0" layoutY="117.0" mnemonicParsing="false" onAction="#cadastrarUsuario" text="Inserir" />
+            <Button layoutX="140.0" layoutY="117.0" mnemonicParsing="false" onAction="#fazerUpdate" text="Atualizar " />
+            <Button layoutX="139.0" layoutY="167.0" mnemonicParsing="false" onAction="#abrirTelaDetalhada" prefHeight="25.0" prefWidth="66.0" text="Ver" />
+            <Button layoutX="66.0" layoutY="167.0" mnemonicParsing="false" onAction="#fazerDelete" text="Deletar" />
+            <Label layoutX="178.0" layoutY="34.0" text="Selecione um usuário">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="choiceBoxSelect" layoutX="349.0" layoutY="142.0" prefWidth="150.0" />
          </children>
       </Pane>
    </children>

@@ -1,11 +1,7 @@
 package Controller;
 
 import java.io.IOException;
-
-import com.db4o.Db4o;
-
 import Clientpackage.Client;
-import Model.Db4oManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -24,9 +20,8 @@ public class TelaDetalhadaController {
     ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
     
     public void voltar(ActionEvent event) throws IOException{
-        controllerPrincipal.switchScene(event,"../view/TelaSelect.fxml");
+        controllerPrincipal.abrirTelaSelect(event);
     }
-   
 
     public void inicializarCliente(Client cliente) {
         this.cliente=cliente;

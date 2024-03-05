@@ -1,5 +1,6 @@
 package Clientpackage;
 public class Client {
+    private int id;
     private String name;
     private String email;
     private String password;
@@ -13,7 +14,13 @@ public class Client {
         this.email = email;
         this.gender = gender;
     }
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
