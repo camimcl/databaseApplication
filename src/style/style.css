@@ -1,0 +1,15 @@
+.labelSelect{
+    -fx-font-size:18px;
+    -fx-alignment:center;
+    -fx-font-family:"Kode Mono";
+}
+
+.button {
+    -fx-background-radius: 15;
+    fx-font-family:"Kode Mono";
+    -fx-text-fill: #f7f7f7;
+    -fx-background-color:rgb(18, 140, 227) ;
+}
+#painelSelect{ 
+    -fx-background-color: linear-gradient(to bottom, #8dcbf5, #08309c);
+}

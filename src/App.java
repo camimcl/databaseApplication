@@ -13,6 +13,8 @@ public class App extends Application{
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("view/TelaSelect.fxml"));
         Scene scene = new Scene(root);
+        String css =this.getClass().getResource("style/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

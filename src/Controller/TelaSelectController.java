@@ -6,16 +6,25 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import Clientpackage.Client;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import Model.Db4oManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 
 
 public class TelaSelectController implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBoxSelect;
+    @FXML
+    private Label labelSelect;
+    @FXML
+    private Button selectButton;
+      @FXML
+    private Pane painelSelect;
     
 
     //criando as instancias necessárias
