@@ -58,6 +58,8 @@ public class ControllerPrincipal {
         
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+        String css =this.getClass().getResource("../style/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
     }

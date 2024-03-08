@@ -38,11 +38,11 @@ public class TelaUpdateClienteController implements Initializable {
         
         Client clienteAtualizado = new Client(novoNome, novoEmail, novoGenero);
 
-        Db4oManager dbManager = new Db4oManager("database.dbo");
+        Db4oManager dbManager = Db4oManager.getInstance();
 
         int id = clienteSelecionado.getId();
+
         dbManager.updateCliente(id, clienteAtualizado); 
-        dbManager.fecharConexao();
 
         controllerPrincipal.abrirTelaSelect(event);
     }

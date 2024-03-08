@@ -36,12 +36,14 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaSelectController">
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaSelectController">
    <children>
       <Pane fx:id="painelSelect" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -49,12 +51,12 @@
             <Button layoutX="363.0" layoutY="109.0" mnemonicParsing="false" onAction="#fazerUpdate" prefHeight="25.0" prefWidth="54.0" text="Atualizar " />
             <Button fx:id="selectButton" layoutX="293.0" layoutY="109.0" mnemonicParsing="false" onAction="#abrirTelaDetalhada" prefHeight="18.0" prefWidth="54.0" text="Ver" />
             <Button layoutX="293.0" layoutY="151.0" mnemonicParsing="false" onAction="#fazerDelete" text="Deletar" />
-            <Label fx:id="labelSelect" layoutX="44.0" layoutY="56.0" prefHeight="35.0" prefWidth="199.0" text="Selecione um usuário">
+            <Label fx:id="labelSelect" layoutX="44.0" layoutY="56.0" prefHeight="35.0" prefWidth="199.0" text="Sua playlist" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="choiceBoxSelect" centerShape="false" layoutX="44.0" layoutY="109.0" pickOnBounds="false" prefHeight="25.0" prefWidth="193.0" scaleShape="false">
+            <ChoiceBox fx:id="choiceBoxSelect" layoutX="44.0" layoutY="109.0" pickOnBounds="false" prefHeight="25.0" prefWidth="193.0">
                <effect>
                   <InnerShadow>
                      <color>
@@ -62,6 +64,11 @@
                      </color>
                   </InnerShadow>
                </effect></ChoiceBox>
+            <ImageView layoutX="44.0" layoutY="23.0">
+               <image>
+                  <Image url="@../../../../../Downloads/icons/icons8-spotify-24.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

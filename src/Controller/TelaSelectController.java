@@ -29,14 +29,16 @@ public class TelaSelectController implements Initializable {
 
     //criando as instancias necessárias
     ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
+    
     TelaUpdateClienteController telaUpdateClienteController = new TelaUpdateClienteController();
-    Db4oManager dbManager = new Db4oManager("database.dbo"); 
+
+    Db4oManager dbManager = Db4oManager.getInstance();
 
 
     // inicializando a choicebox com os nomes dos clientes ja registrados 
     @Override
     public void initialize(URL location, ResourceBundle resources) { 
-        List<Client> clientes = dbManager.verTodosOsClientes();
+        List<Client> clientes = dbManager.getClientes();
         for (Client client : clientes) {
             choiceBoxSelect.getItems().addAll(client.getName());
         }
@@ -47,8 +49,9 @@ public class TelaSelectController implements Initializable {
     @FXML
     public void abrirTelaDetalhada(ActionEvent event) throws IOException { 
         int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
+        
         if(!choiceBoxSelect.getItems().isEmpty() && indiceSelecionado>=0){
-            List<Client> clientes = dbManager.verTodosOsClientes();
+            List<Client> clientes = dbManager.getClientes();
             Client clienteSelecionado = clientes.get(indiceSelecionado);
 
             if (clienteSelecionado !=null) {
@@ -63,7 +66,7 @@ public class TelaSelectController implements Initializable {
     void fazerDelete(ActionEvent event) throws IOException {
         int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
             if (indiceSelecionado >= 0) {
-                List<Client> clientes = dbManager.verTodosOsClientes();
+                List<Client> clientes = dbManager.getClientes();
                 Client clienteSelecionado = clientes.get(indiceSelecionado);
                 if (clienteSelecionado != null) {
                     int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente deletar o cliente selecionado?", "Confirmação", JOptionPane.YES_NO_OPTION);
@@ -92,7 +95,7 @@ public class TelaSelectController implements Initializable {
     void fazerUpdate(ActionEvent event) throws IOException {
         int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
         if (indiceSelecionado >= 0) {
-            List<Client> clientes = dbManager.verTodosOsClientes();
+            List<Client> clientes = dbManager.getClientes();
             Client clienteSelecionado = clientes.get(indiceSelecionado);
             if (clienteSelecionado != null) {
                 controllerPrincipal.abrirTelaUpdate(event, clienteSelecionado);

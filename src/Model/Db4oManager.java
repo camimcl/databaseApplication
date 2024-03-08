@@ -10,71 +10,100 @@ import Clientpackage.Client;
 
 public class Db4oManager {
     private int nextClientId;
-    private ObjectContainer db;
+    private ObjectContainer objectContainer;
+    private static String DATABASE_PATH = "database.dbo";
+    
+    // attributo do singleton
+    private static Db4oManager db4oManager;
+ 
 
-@SuppressWarnings("deprecation")
-public Db4oManager(String dbCaminho){
-    db = Db4o.openFile(dbCaminho);
-} 
-public void fecharConexao(){
-    db.close();
-}
-public void inserirCliente(Client client){
-    List<Client> clientes = verTodosOsClientes();
-    int proximoId = 0;
-    for (Client c : clientes) {
-        if (c.getId() >= proximoId) {
-            proximoId = c.getId() + 1;
+    // metodo do singleton
+    public static Db4oManager getInstance() {
+        if (db4oManager == null) {
+            db4oManager = new Db4oManager();
         }
-    }
-    client.setId(proximoId);
-    db.store(client);
-}
-public Client buscarClientePorId(int id) {
-    List<Client> clientes = verTodosOsClientes();
-    for (Client cliente : clientes) {
-        if (cliente.getId() == id) {
-            return cliente;
-        }
-    }
-    System.out.println("Cliente não encontrado.");
-    return null;
-}
 
-public void updateCliente(int id,Client clienteAtualizado){
-     Client clienteAntigo = buscarClientePorId(id);
-    if (clienteAntigo != null) {
-        if (clienteAtualizado.getName() != null && !clienteAtualizado.getName().isEmpty()) {
-            clienteAntigo.setName(clienteAtualizado.getName());
-        }
-        if (clienteAtualizado.getEmail() != null && !clienteAtualizado.getEmail().isEmpty()) {
-            clienteAntigo.setEmail(clienteAtualizado.getEmail());
-        }
-        if (clienteAtualizado.getGender() != null && !clienteAtualizado.getGender().isEmpty()) {
-            clienteAntigo.setGender(clienteAtualizado.getGender());
-        }
-        db.store(clienteAntigo);
-        db.close();
-    } else {
-        System.out.println("Cliente não encontrado para atualização.");
+        return db4oManager;
     }
-}
-public void deleteCliente(int id){
-    Client clienteParaDeletar = buscarClientePorId(id);
-    if (clienteParaDeletar != null) {
-        db.delete(clienteParaDeletar);
-    } else {
-        System.out.println("Cliente não encontrado para deleção.");
-    }
-}
 
-public List<Client>verTodosOsClientes(){
-    List<Client>clientes = new ArrayList<>();
-    ObjectSet<Client> result = db.queryByExample(Client.class);
-    while (result.hasNext()){
-        clientes.add(result.next());
+    // Construtor privado do singleton
+    private Db4oManager() {
+        openConnection();
     }
-    return clientes;
-}
+
+    @SuppressWarnings("deprecation")
+    private void openConnection() {
+        objectContainer = Db4o.openFile(DATABASE_PATH); 
+    }
+
+    public void inserirCliente(Client client){
+        List<Client> clientes = getClientes();
+        
+        int proximoId = 0;
+        
+        for (Client c : clientes) {
+            if (c.getId() >= proximoId) {
+                proximoId = c.getId() + 1;
+            }
+        }
+
+        client.setId(proximoId);
+
+        objectContainer.store(client);
+    }
+    public Client buscarClientePorId(int id) {
+        Client client = null;
+
+        List<Client> clientes = getClientes();
+
+        for (Client cliente : clientes) {
+            if (cliente.getId() == id) {
+                client = cliente;
+                break;
+            }
+        }
+
+        return client;
+    }
+
+    public void updateCliente(int id,Client clienteAtualizado){
+        Client clienteAntigo = buscarClientePorId(id);
+
+        if (clienteAntigo != null) {
+            if (clienteAtualizado.getName() != null && !clienteAtualizado.getName().isEmpty()) {
+                clienteAntigo.setName(clienteAtualizado.getName());
+            }
+            if (clienteAtualizado.getEmail() != null && !clienteAtualizado.getEmail().isEmpty()) {
+                clienteAntigo.setEmail(clienteAtualizado.getEmail());
+            }
+            if (clienteAtualizado.getGender() != null && !clienteAtualizado.getGender().isEmpty()) {
+                clienteAntigo.setGender(clienteAtualizado.getGender());
+            }
+            objectContainer.store(clienteAntigo);
+        } else {
+            System.out.println("Cliente não encontrado para atualização.");
+        }
+    }
+    public void deleteCliente(int id){
+        Client clienteParaDeletar = buscarClientePorId(id);
+
+        if (clienteParaDeletar != null) {
+            objectContainer.delete(clienteParaDeletar);
+        } else {
+            System.out.println("Cliente não encontrado para deleção.");
+        }
+    }
+
+    public List<Client> getClientes(){
+        List<Client> clientes = new ArrayList<>();
+
+        ObjectSet<Client> result = objectContainer.queryByExample(Client.class);
+
+        while (result.hasNext()){
+            clientes.add(result.next());
+        }
+
+        return clientes;
+    }
 }
 
