@@ -12,17 +12,17 @@ public class TelaDetalhadaController {
     private Label caixaEmail;
     @FXML
     private Label caixaGenero;
-
     @FXML
     private Label caixaNome;
+
     private Client cliente;
     
     ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
-    
+    //voltar para tela de selecao
     public void voltar(ActionEvent event) throws IOException{
         controllerPrincipal.abrirTelaSelect(event);
     }
-
+    //incializa informacoes referente a selecao
     public void inicializarCliente(Client cliente) {
         this.cliente=cliente;
         caixaNome.setText(cliente.getName());

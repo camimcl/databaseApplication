@@ -32,15 +32,18 @@ public class TelaDeCadastroController implements Initializable {
 
     @FXML
     private Button registerButton;
+
     ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
+
+    private Db4oManager dbManager = Db4oManager.getInstance();
   
+    //inicializar opcoes da choicebox
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         choiceBox.getItems().addAll("FEMININO","MASCULINO","OUTRO");
     }
 
-    private Db4oManager dbManager = Db4oManager.getInstance();
-
+    //pegar informacoes do novo cliente e mandar pro banco 
     public void fazerCadastro(ActionEvent event) throws IOException{
         String name = nameContainer.getText();
         String email = emailContainer.getText();
@@ -53,12 +56,4 @@ public class TelaDeCadastroController implements Initializable {
         controllerPrincipal.abrirTelaSelect(event);
     }
         
-        // para verificar se ta registrando
-        // Db4oManager dbManager = new Db4oManager("database.dbo");        
-        // List<Client> clientes = dbManager.verTodosOsClientes();
-        // for (Client client : clientes) {
-        //     System.out.println("nome: "+client.getName()+"\n"+"Email: "+client.getEmail()+"\n"+"Gender:"+client.getGender());
-        // }
-    
-
 }
