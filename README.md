@@ -1,18 +1,27 @@
-## Getting Started
+##Project:
+Create a register application with an OOP database, with functionalities for
+update,delete,insert and select(CRUD), and with interfaces.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+1- for the interfaces, I'll use the SceneBuilder and JavaFX.
+2- for the OOP database I'll use the "DB4o" lib.
 
-## Folder Structure
+##===========Sketch===========
+*Menu page with the operations needed (INSERT, DELETE, SELECT, UPDATE)
+*1 page intended for each operation.
+*1 class intended for client information
 
-The workspace contains two folders by default, where:
+#MVC architecture
+-Model class will contain the algorithm for each operation of the referent page. (business rule)
+-View class will be the view pages that capture the information from the user.
+-Controller class will process the information received by the view class.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+#Design pattern: singleton for using the same instance of the database.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+#Styling: as simple as possible 
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+*This project won't have authentication for the login since is a basic application 
 
-## Dependency Management
+*it also won't have treatment for the information received, the goal is just to make the functionalities
+and save it on this database
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+=============================
