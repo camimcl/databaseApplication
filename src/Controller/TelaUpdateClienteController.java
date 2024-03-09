@@ -26,7 +26,7 @@ public class TelaUpdateClienteController implements Initializable {
     //inicializar opcoes da choicebox
     @Override
     public void initialize(URL location, ResourceBundle resources) {//Inicializar choicebox
-        choiceBox.getItems().addAll("FEMININO","MASCULINO","OUTRO");
+        choiceBox.getItems().addAll("Feminino","Masculino","Outro");
     }
 
     //recebe o cliente escolhido
@@ -40,7 +40,9 @@ public class TelaUpdateClienteController implements Initializable {
         String novoNome = nameContainer.getText();
         String novoEmail = emailContainer.getText();
         String novoGenero = choiceBox.getValue();
-        
+
+        // LocalDate dateOfbirth =clienteSelecionado.getDateOfBirth();
+
         Client clienteAtualizado = new Client(novoNome, novoEmail, novoGenero);
 
         int id = clienteSelecionado.getId();

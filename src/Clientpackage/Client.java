@@ -1,18 +1,18 @@
 package Clientpackage;
+
 public class Client {
     private int id;
     private String name;
     private String email;
     private String password;
     private String gender;
-    private int dateOfBirth;
-
     
     
     public Client(String name, String email, String gender) {
         this.name = name;
         this.email = email;
         this.gender = gender;
+       
     }
     public int getId() {
         return id;
@@ -45,10 +45,6 @@ public class Client {
         this.password = password;
     }
    
-    public int getDateOfBirth() {
-        return dateOfBirth;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -57,8 +53,4 @@ public class Client {
         this.gender = gender;
     }
 
-    public void setDateOfBirth(int dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-    
 }

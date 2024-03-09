@@ -14,7 +14,7 @@ public class TelaDetalhadaController {
     private Label caixaGenero;
     @FXML
     private Label caixaNome;
-
+    @FXML
     private Client cliente;
     
     ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
@@ -28,7 +28,9 @@ public class TelaDetalhadaController {
         caixaNome.setText(cliente.getName());
         caixaEmail.setText(cliente.getEmail());
         caixaGenero.setText(cliente.getGender());
-       
+        
+
+    
     }
 
 }   

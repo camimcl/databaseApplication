@@ -73,7 +73,7 @@ public class TelaSelectController implements Initializable {
                     if (opcao == JOptionPane.YES_OPTION) {
                         dbManager.deleteCliente(clienteSelecionado.getId());
                         JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
-                        choiceBoxSelect.getItems().remove(indiceSelecionado);
+                        controllerPrincipal.abrirTelaSelect(event);
                         }
                     }
                     else {

@@ -6,8 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +20,7 @@ public class TelaDeCadastroController implements Initializable {
     
     @FXML
     private ChoiceBox<String> choiceBox;
+
     @FXML
     private DatePicker dateOfBirthContainer;
 
@@ -33,6 +36,12 @@ public class TelaDeCadastroController implements Initializable {
     @FXML
     private Button registerButton;
 
+    @FXML 
+    private Label registerTitle;
+
+    @FXML
+    private Label labelErrorMessage;
+    
     ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
 
     private Db4oManager dbManager = Db4oManager.getInstance();
@@ -40,7 +49,7 @@ public class TelaDeCadastroController implements Initializable {
     //inicializar opcoes da choicebox
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        choiceBox.getItems().addAll("FEMININO","MASCULINO","OUTRO");
+        choiceBox.getItems().addAll("Feminino","Masculino","Outro");
     }
 
     //pegar informacoes do novo cliente e mandar pro banco 
@@ -48,12 +57,17 @@ public class TelaDeCadastroController implements Initializable {
         String name = nameContainer.getText();
         String email = emailContainer.getText();
         String gender = choiceBox.getValue();
-        
-        Client client = new Client(name,email,gender);
+        if(name!=null && email!=null && gender != null){
+            Client client = new Client(name,email,gender);
       
-        dbManager.inserirCliente(client);
+            dbManager.inserirCliente(client);
         
-        controllerPrincipal.abrirTelaSelect(event);
+            controllerPrincipal.abrirTelaSelect(event);
+        }
+            else{ 
+                labelErrorMessage.setText("Para continuar, preencha os campos!");
+                
+            }
     }
         
 }

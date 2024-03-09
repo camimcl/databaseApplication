@@ -34,45 +34,57 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" scaleShape="false" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaDeCadastroController">
-  <children>
-      <StackPane prefHeight="333.0" prefWidth="499.0">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="687.0" style="-fx-background-color: linear-gradient(to bottom,#67c7ff,#7393B3);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaDeCadastroController">
+   <children>
+      <Pane layoutX="95.0" layoutY="50.0" prefHeight="470.0" prefWidth="500.0" style="-fx-background-color: #FAF9F6; -fx-border-radius: 10; -fx-background-radius: 15;">
          <children>
-            <Pane blendMode="DARKEN" depthTest="DISABLE" prefHeight="395.0" prefWidth="640.0" StackPane.alignment="CENTER">
-               <children>
-                  <Label layoutX="103.0" layoutY="97.0" text="Nome" />
-                  <TextField fx:id="nameContainer" layoutX="107.0" layoutY="115.0" prefHeight="26.0" prefWidth="213.0" style="-fx-border-radius: 30px;" />
-                  <PasswordField fx:id="passwordContainer" layoutX="107.0" layoutY="228.0" prefHeight="26.0" prefWidth="213.0" />
-                  <Label layoutX="103.0" layoutY="152.0" prefHeight="18.0" prefWidth="36.0" text="Email" />
-                  <Label layoutX="270.0" layoutY="25.0" prefHeight="50.0" prefWidth="138.0" text="Register">
-                     <font>
-                        <Font name="Sans Serif Collection" size="32.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="emailContainer" layoutX="107.0" layoutY="170.0" prefHeight="26.0" prefWidth="213.0" />
-                  <Label layoutX="103.0" layoutY="210.0" prefHeight="18.0" prefWidth="47.0" text="Senha" />
-                  <Button fx:id="registerButton" layoutX="251.0" layoutY="289.0" mnemonicParsing="false" onAction="#fazerCadastro" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #0F52BA;" text="Register" textFill="WHITE">
-                     <font>
-                        <Font name="Sans Serif Collection" size="13.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="368.0" layoutY="105.0" text="Data de Nascimento" />
-                  <Label layoutX="368.0" layoutY="182.0" text="Gênero" />
-                  <DatePicker fx:id="dateOfBirthContainer" layoutX="368.0" layoutY="123.0" prefHeight="26.0" prefWidth="138.0" />
-                  <ChoiceBox fx:id="choiceBox" layoutX="368.0" layoutY="200.0" prefHeight="26.0" prefWidth="138.0" />
-                  
-               </children>
-            </Pane>
+            <Label layoutX="45.0" layoutY="160.0" text="Nome*" />
+            <PasswordField fx:id="passwordContainer" layoutX="41.0" layoutY="274.0" prefHeight="26.0" prefWidth="213.0" promptText="*****" />
+            <Label layoutX="45.0" layoutY="206.0" prefHeight="18.0" prefWidth="42.0" text="Email*" />
+            <Label fx:id="registerTitle" layoutY="44.0" prefHeight="50.0" prefWidth="498.0" text="Create Account" textFill="#67c7ff">
+               <font>
+                  <Font name="Calibri Bold" size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="emailContainer" layoutX="41.0" layoutY="224.0" prefHeight="26.0" prefWidth="213.0" promptText="contato@gmail.com" />
+            <Label layoutX="43.0" layoutY="254.0" prefHeight="18.0" prefWidth="42.0" text="Senha" />
+            <Button fx:id="registerButton" layoutX="171.0" layoutY="372.0" mnemonicParsing="false" onAction="#fazerCadastro" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #67c7ff; -fx-background-radius: 10;" text="Register" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="307.0" layoutY="156.0" text="Gênero*" />
+            <ChoiceBox fx:id="choiceBox" layoutX="307.0" layoutY="176.0" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #FAF9F6; -fx-border-color: grey; -fx-border-radius: 10px;" />
+            <TextField fx:id="nameContainer" layoutX="41.0" layoutY="177.0" prefHeight="26.0" prefWidth="213.0" promptText="Nome" />
+            <ImageView fitHeight="15.0" fitWidth="17.0" layoutX="233.0" layoutY="280.0" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-cadeado-30.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="233.0" layoutY="230.0" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-nova-mensagem-30.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="22.0" fitWidth="18.0" layoutX="231.0" layoutY="181.0" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-pessoa-64-cinza.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelErrorMessage" layoutX="117.0" layoutY="326.0" prefHeight="26.0" prefWidth="266.0" textFill="#eb2121b2">
+               <font>
+                  <Font name="Calibri Bold" size="17.0" />
+               </font>
+            </Label>
          </children>
-      </StackPane>
-  </children>
-</VBox>
+      </Pane>
+   </children>
+</Pane>

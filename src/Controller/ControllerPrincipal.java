@@ -25,6 +25,12 @@ public class ControllerPrincipal {
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+
+        //adicao de estilizacao para scene
+        String css =this.getClass().getResource("../style/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
+
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -41,6 +47,12 @@ public class ControllerPrincipal {
     
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+
+        //adicao de estilizacao para scene
+        String css =this.getClass().getResource("../style/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -54,6 +66,12 @@ public class ControllerPrincipal {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+
+        //adicao de estilizacao para scene
+        String css =this.getClass().getResource("../style/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
+
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -70,7 +88,8 @@ public class ControllerPrincipal {
         //adicao de estilizacao para scene
         String css =this.getClass().getResource("../style/style.css").toExternalForm();
         scene.getStylesheets().add(css);
-
+        
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
