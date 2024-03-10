@@ -1,19 +1,24 @@
 package Controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
-import Clientpackage.Client;
+
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import musicaspackage.Musicas;
 import Model.Db4oManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+  
 
 
 public class TelaSelectController implements Initializable {
@@ -23,57 +28,96 @@ public class TelaSelectController implements Initializable {
     private Label labelSelect;
     @FXML
     private Button selectButton;
-      @FXML
+    @FXML
     private Pane painelSelect;
-    
+    @FXML
+    private ImageView imageView;
+    @FXML
+    private Pane pane;
 
     //criando as instancias necessárias
     ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
     
-    TelaUpdateClienteController telaUpdateClienteController = new TelaUpdateClienteController();
+    TelaUpdateMusicaController telaUpdateMusicaController = new TelaUpdateMusicaController();
 
     Db4oManager dbManager = Db4oManager.getInstance();
+    
 
 
-    // inicializando a choicebox com os nomes dos clientes ja registrados 
+    // inicializando a choicebox com os nomes dos musicas ja registrados 
     @Override
     public void initialize(URL location, ResourceBundle resources) { 
-        List<Client> clientes = dbManager.getClientes();
-        for (Client client : clientes) {
-            choiceBoxSelect.getItems().addAll(client.getName());
+        List<Musicas> musicas = dbManager.getMusicas();
+        for (Musicas musica : musicas) {
+            choiceBoxSelect.getItems().addAll(musica.getName());
         }
+        
+
+        choiceBoxSelect.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Musicas musicaSelecionada = dbManager.buscarMusicaPorNome(newValue);
+                if (musicaSelecionada != null) {
+                    String caminhoDaImagem = musicaSelecionada.getCaminhoImagem();
+                   
+                    if (caminhoDaImagem != null && !caminhoDaImagem.isEmpty()) {
+                        exibirImagem(caminhoDaImagem);
+                    }
+                }
+            }
+            else {
+               exibirImagem(null); //not workin XD
+            }
+        });
     }
-
-
-    //metodo para direcionar o cliente selecionado para o metodo de detalhamento
+    
+    
+    private void exibirImagem(String caminhoDaImagem) {
+        pane.getChildren().clear();
+    if (caminhoDaImagem != null && !caminhoDaImagem.isEmpty()) {
+        File file = new File(caminhoDaImagem);
+        System.out.println("Arquivo existe: " + file.exists());
+        if (file.exists()) { 
+            Image imagem = new Image("file:" + caminhoDaImagem);
+            ImageView imageView = new ImageView(imagem);
+            imageView.setFitWidth(200);
+            imageView.setFitHeight(200);
+            pane.getChildren().add(imageView);
+        } 
+    }
+    else{
+        imageView.setImage(null);
+    }
+}
+    
+    //metodo para direcionar a música selecionado para o metodo de detalhamento
     @FXML
     public void abrirTelaDetalhada(ActionEvent event) throws IOException { 
         int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
         
         if(!choiceBoxSelect.getItems().isEmpty() && indiceSelecionado>=0){
-            List<Client> clientes = dbManager.getClientes();
-            Client clienteSelecionado = clientes.get(indiceSelecionado);
+            List<Musicas> musicas = dbManager.getMusicas();
+            Musicas musicaSelecionada = musicas.get(indiceSelecionado);
 
-            if (clienteSelecionado !=null) {
-                controllerPrincipal.abrirTelaDetalhada(event, clienteSelecionado);//aciona o metodo do controller principal para trocar de tela
+            if (musicaSelecionada !=null) {
+                controllerPrincipal.abrirTelaDetalhada(event, musicaSelecionada);//aciona o metodo do controller principal para trocar de tela
             }
         }
     }
 
 
-    //metodo para direcionar o cliente selecionado para o metodo de delete
+    //metodo para direcionar a música selecionado para o metodo de delete
     @FXML
     void fazerDelete(ActionEvent event) throws IOException {
         int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
             if (indiceSelecionado >= 0) {
-                List<Client> clientes = dbManager.getClientes();
-                Client clienteSelecionado = clientes.get(indiceSelecionado);
-                if (clienteSelecionado != null) {
-                    int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente deletar o cliente selecionado?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                List<Musicas> musicas = dbManager.getMusicas();
+                Musicas musicaSelecionada = musicas.get(indiceSelecionado);
+                if (musicaSelecionada != null) {
+                    int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente deletar a música selecionado?", "Confirmação", JOptionPane.YES_NO_OPTION);
                     if (opcao == JOptionPane.YES_OPTION) {
-                        dbManager.deleteCliente(clienteSelecionado.getId());
-                        JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
-                        choiceBoxSelect.getItems().remove(indiceSelecionado);
+                        dbManager.deletarMusica(musicaSelecionada.getId());
+                        JOptionPane.showMessageDialog(null, "Música deletado com sucesso!");
+                        controllerPrincipal.abrirTelaSelect(event);
                         }
                     }
                     else {
@@ -90,15 +134,15 @@ public class TelaSelectController implements Initializable {
     }        
     
 
-    //metodo para direcionar o cliente selecionado para uma atualizacao de dados
+    //metodo para direcionar a música selecionado para uma atualizacao de dados
     @FXML
     void fazerUpdate(ActionEvent event) throws IOException {
         int indiceSelecionado = choiceBoxSelect.getSelectionModel().getSelectedIndex();
         if (indiceSelecionado >= 0) {
-            List<Client> clientes = dbManager.getClientes();
-            Client clienteSelecionado = clientes.get(indiceSelecionado);
-            if (clienteSelecionado != null) {
-                controllerPrincipal.abrirTelaUpdate(event, clienteSelecionado);
+            List<Musicas> musicas = dbManager.getMusicas();
+            Musicas musicaSelecionada = musicas.get(indiceSelecionado);
+            if (musicaSelecionada != null) {
+                controllerPrincipal.abrirTelaUpdate(event, musicaSelecionada);
             }
         }
     }              

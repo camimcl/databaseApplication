@@ -5,11 +5,12 @@ import java.util.List;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.query.Predicate;
 
-import Clientpackage.Client;
+import musicaspackage.Musicas;
 
 public class Db4oManager {
-    private int nextClientId;
+    
     private ObjectContainer objectContainer;
     private static String DATABASE_PATH = "database.dbo";
     
@@ -36,74 +37,91 @@ public class Db4oManager {
         objectContainer = Db4o.openFile(DATABASE_PATH); 
     }
 
-    public void inserirCliente(Client client){
-        List<Client> clientes = getClientes();
+    public void inserirMusica(Musicas musica){
+        List<Musicas> musicas = getMusicas();
         
         int proximoId = 0;
         
-        for (Client c : clientes) {
+        for (Musicas c : musicas) {
             if (c.getId() >= proximoId) {
                 proximoId = c.getId() + 1;
             }
         }
 
-        client.setId(proximoId);
+        musica.setId(proximoId);
 
-        objectContainer.store(client);
+        objectContainer.store(musica);
     }
-    public Client buscarClientePorId(int id) {
-        Client client = null;
+    public Musicas buscarMusicaPorId(int id) {
+        Musicas musica = null;
 
-        List<Client> clientes = getClientes();
+        List<Musicas> musicas = getMusicas();
 
-        for (Client cliente : clientes) {
-            if (cliente.getId() == id) {
-                client = cliente;
+        for (Musicas musicae : musicas) {
+            if (musicae.getId() == id) {
+                musica = musicae;
                 break;
             }
         }
 
-        return client;
+        return musica;
     }
 
-    public void updateCliente(int id,Client clienteAtualizado){
-        Client clienteAntigo = buscarClientePorId(id);
+    public void updateMusica(int id,Musicas musicaAtualizada){
+        Musicas musicaAntiga = buscarMusicaPorId(id);
 
-        if (clienteAntigo != null) {
-            if (clienteAtualizado.getName() != null && !clienteAtualizado.getName().isEmpty()) {
-                clienteAntigo.setName(clienteAtualizado.getName());
+        if (musicaAntiga != null) {
+            if (musicaAtualizada.getName() != null && !musicaAtualizada.getName().isEmpty()) {
+                musicaAntiga.setName(musicaAtualizada.getName());
             }
-            if (clienteAtualizado.getEmail() != null && !clienteAtualizado.getEmail().isEmpty()) {
-                clienteAntigo.setEmail(clienteAtualizado.getEmail());
+            if (musicaAtualizada.getAlbum() != null && !musicaAtualizada.getAlbum().isEmpty()) {
+                musicaAntiga.setAlbum(musicaAtualizada.getAlbum());
             }
-            if (clienteAtualizado.getGender() != null && !clienteAtualizado.getGender().isEmpty()) {
-                clienteAntigo.setGender(clienteAtualizado.getGender());
+            if (musicaAtualizada.getArtista() != null && !musicaAtualizada.getArtista().isEmpty()) {
+                musicaAntiga.setArtista(musicaAtualizada.getArtista());
             }
-            objectContainer.store(clienteAntigo);
+            if(musicaAtualizada.getCaminhoImagem()!=null && !musicaAtualizada.getCaminhoImagem().isEmpty()){
+                musicaAntiga.setCaminhoImagem(musicaAtualizada.getCaminhoImagem());
+            }
+            objectContainer.store(musicaAntiga);
         } else {
-            System.out.println("Cliente não encontrado para atualização.");
+            System.out.println("musica não encontrado para atualização.");
         }
     }
-    public void deleteCliente(int id){
-        Client clienteParaDeletar = buscarClientePorId(id);
+    public void deletarMusica(int id){
+        Musicas musicaParaDeletar = buscarMusicaPorId(id);
 
-        if (clienteParaDeletar != null) {
-            objectContainer.delete(clienteParaDeletar);
+        if (musicaParaDeletar != null) {
+            objectContainer.delete(musicaParaDeletar);
         } else {
-            System.out.println("Cliente não encontrado para deleção.");
+            System.out.println("Musica não encontrado para deleção.");
         }
     }
 
-    public List<Client> getClientes(){
-        List<Client> clientes = new ArrayList<>();
+    public List<Musicas> getMusicas(){
+        List<Musicas> musicas = new ArrayList<>();
 
-        ObjectSet<Client> result = objectContainer.queryByExample(Client.class);
+        ObjectSet<Musicas> result = objectContainer.queryByExample(Musicas.class);
 
         while (result.hasNext()){
-            clientes.add(result.next());
+            musicas.add(result.next());
         }
 
-        return clientes;
+        return musicas;
+    }
+    public Musicas buscarMusicaPorNome(String nome) {
+        ObjectSet<Musicas> result = objectContainer.query(new Predicate<Musicas>() {
+            @Override
+            public boolean match(Musicas musica) {
+                return musica.getName().equals(nome);
+            }
+        });
+    
+        if (result.hasNext()) {
+            return result.next(); 
+        } else {
+            return null; 
+        }
     }
 }
 

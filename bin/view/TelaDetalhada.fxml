@@ -3,49 +3,50 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaDetalhadaController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaDetalhadaController">
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0">
+      <Pane layoutX="83.0" layoutY="51.0" prefHeight="298.0" prefWidth="453.0">
          <children>
-            <Label layoutX="129.0" layoutY="138.0" text="EMAIL:">
+            <Label layoutX="86.0" layoutY="104.0" text="Nome">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="150.0" layoutY="73.0" text="DETALHAMENTO USUARIO ">
+            <Label layoutX="107.0" layoutY="39.0" text="Detalhamento musica">
                <font>
                   <Font size="27.0" />
                </font>
             </Label>
-            <Label layoutX="129.0" layoutY="179.0" text="NOME:">
+            <Label layoutX="86.0" layoutY="145.0" text="Artista">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="132.0" layoutY="218.0" text="SEXO:">
+            <Label layoutX="87.0" layoutY="184.0" text="Album">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="caixaEmail" layoutX="192.0" layoutY="138.0">
+            <Label fx:id="caixaNome" layoutX="149.0" layoutY="104.0" prefHeight="25.0" prefWidth="168.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="caixaNome" layoutX="192.0" layoutY="179.0">
+            <Label fx:id="caixaArtista" layoutX="149.0" layoutY="145.0" prefHeight="21.0" prefWidth="148.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="caixaGenero" layoutX="183.0" layoutY="218.0">
+            <Label fx:id="caixaAlbum" layoutX="140.0" layoutY="184.0" prefHeight="21.0" prefWidth="148.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="227.0" layoutY="282.0" mnemonicParsing="false" onAction="#voltar" text="voltar" />
-         </children></Pane>
+            <Button layoutX="184.0" layoutY="248.0" mnemonicParsing="false" onAction="#voltar" text="voltar" />
+         </children>
+      </Pane>
    </children>
-</StackPane>
+</Pane>
