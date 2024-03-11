@@ -40,7 +40,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: linear-gradient(to bottom,#292d29,#1b1c1b);;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaSelectController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: linear-gradient(to bottom,#282928,#1b1c1b);;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaSelectController">
    <children>
       <Button layoutX="149.0" layoutY="466.0" mnemonicParsing="false" onAction="#fazerUpdate" prefHeight="35.0" prefWidth="55.0">
          <graphic>

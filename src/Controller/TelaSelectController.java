@@ -64,9 +64,7 @@ public class TelaSelectController implements Initializable {
                     }
                 }
             }
-            else {
-               exibirImagem(null); //not workin XD
-            }
+
         });
     }
     

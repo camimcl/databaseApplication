@@ -6,6 +6,7 @@ import Model.Db4oManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +28,9 @@ public class TelaUpdateMusicaController {
     private Button botaoSelecionarImagem;
     @FXML
     private Pane pane;
+    @FXML
+    private Label atualizacaoLabel;
+    
     String caminhoDaImagem;
 
     ControllerPrincipal controllerPrincipal = new ControllerPrincipal();
@@ -50,7 +54,7 @@ public class TelaUpdateMusicaController {
     private void selecionarImagem() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Selecione uma imagem");
-        Stage stage = (Stage) botaoSelecionarImagem.getScene().getWindow();
+        Stage stage = (Stage)botaoSelecionarImagem.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
         if (file != null) {
             caminhoDaImagem = file.getAbsolutePath();

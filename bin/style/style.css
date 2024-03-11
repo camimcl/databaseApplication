@@ -5,7 +5,7 @@
     font-style: normal;
 }
 #labelSelect{
-    -fx-font-size:40px;
+    -fx-font-size:32px;
     -fx-font-family:"Gotham-Black";
 }
 
@@ -13,7 +13,7 @@
     -fx-text-fill: #1c1b1b;
     -fx-background-radius:10px;
     -fx-background-color:#1ed760 ;
-
+    
 }
 .choice-box{
     -fx-background-color: white;
@@ -25,3 +25,8 @@
 .choice-box .menu-item{
     -fx-font-size:20px;
 } 
+#atualizacaoLabel{
+    -fx-text-alignment: center;
+    -fx-font-size:30px;
+    -fx-font-family:"Gotham-Black";
+}
