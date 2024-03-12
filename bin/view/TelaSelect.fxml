@@ -92,17 +92,6 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Pane fx:id="pane" layoutX="150.0" layoutY="178.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: white;" />
-      <Label fx:id="caixaArtista" layoutX="144.0" layoutY="433.0" prefHeight="34.0" prefWidth="238.0" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="caixaAlbum" layoutX="144.0" layoutY="387.0" prefHeight="34.0" prefWidth="305.0" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="71.0" fitWidth="90.0" layoutX="2.0" layoutY="8.0" preserveRatio="true">
          <image>
             <Image url="@../assets/SPOTIFY-LOGO.png" />
@@ -113,5 +102,20 @@
             <Image url="@../assets/icons8-coração-32.png" />
          </image>
       </ImageView>
+      <Pane fx:id="backgroundPane" layoutX="112.0" layoutY="163.0" prefHeight="340.0" prefWidth="277.0" style="-fx-background-radius: 20px;">
+         <children>
+            <Pane fx:id="pane" layoutX="39.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" />
+            <Label fx:id="caixaArtista" layoutX="11.0" layoutY="281.0" prefHeight="34.0" prefWidth="238.0" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="caixaAlbum" layoutX="9.0" layoutY="240.0" prefHeight="34.0" prefWidth="270.0" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>

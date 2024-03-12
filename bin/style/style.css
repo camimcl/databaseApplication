@@ -40,7 +40,9 @@
     -fx-font-size:15px;
 }
 #caixaArtista{
-    -fx-text-fill: #c5c5c5;
+    -fx-text-fill: #ffffff;
     -fx-font-family:"Gotham-Black";
     -fx-font-size:15px;
+    
+    
 }

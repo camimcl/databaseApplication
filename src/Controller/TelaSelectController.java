@@ -1,36 +1,17 @@
 package Controller;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
-
-import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
-
-import com.db4o.cluster.Cluster;
-
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
-import javafx.scene.robot.Robot;
 import musicaspackage.Musicas;
 import Model.Db4oManager;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -59,8 +40,8 @@ public class TelaSelectController implements Initializable {
     @FXML
     private Label labelAdicionar;
     @FXML
-   
-    
+    private Pane backgroundPane;
+
     private Musicas musica;
 
 
@@ -89,17 +70,19 @@ public class TelaSelectController implements Initializable {
 
                 if (musicaSelecionada != null) {
                     String caminhoDaImagem = musicaSelecionada.getCaminhoImagem();              
-                    exibirImagem(caminhoDaImagem);
+                    exibirImagem(caminhoDaImagem,musicaSelecionada);
+                    System.out.println(musicaSelecionada.getId());
                 }  
         }
     }
     
    
-    private void exibirImagem(String caminhoDaImagem) {
+    private void exibirImagem(String caminhoDaImagem,Musicas musicaSelecionada) {
         // Limpar o conteúdo do painel
         pane.getChildren().clear();
         
         if (caminhoDaImagem != null && !caminhoDaImagem.isEmpty()) {
+            backgroundPane.setStyle("-fx-background-color:transparent;");
             File file = new File(caminhoDaImagem);
             if (file.exists()) { 
                 Image image = new Image("file:" + caminhoDaImagem);
@@ -109,7 +92,31 @@ public class TelaSelectController implements Initializable {
                 pane.getChildren().add(imageView);
                 imageView.layoutXProperty().bind(pane.widthProperty().subtract(imageView.fitWidthProperty()).divide(2));
                 imageView.layoutYProperty().bind(pane.heightProperty().subtract(imageView.fitHeightProperty()).divide(2));
-              
+                int value = musicaSelecionada.getId();
+               switch (value) {
+
+                case 0:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#e4e4de,rgb(86, 207, 195)); -fx-background-radius:25px;");
+                    break;
+                case 1:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#d34d13,rgb(179, 126, 118)); -fx-background-radius:25px;");
+                    break;
+                case 2:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#453873,#6D33A6); -fx-background-radius:25px;");
+                    break;
+                case 10:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#F2F2F2,#F2E422); -fx-background-radius:25px;");
+                    break;
+                case 12:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#D0F2E6,#1A088C); -fx-background-radius:25px;");    
+                    break;
+                case 9:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#d34d13,rgb(179, 126, 118)); -fx-background-radius:25px;");
+                    break;
+                default:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#474746,rgb(34, 33, 32)); -fx-background-radius:25px;");
+                    break;
+               }
             } 
         } else {
             // Adicionar a imagem padrão para músicas sem imagem
