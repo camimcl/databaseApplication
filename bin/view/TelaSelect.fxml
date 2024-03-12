@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -42,53 +43,75 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: linear-gradient(to bottom,#282928,#1b1c1b);;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaSelectController">
    <children>
-      <Button layoutX="149.0" layoutY="466.0" mnemonicParsing="false" onAction="#fazerUpdate" prefHeight="35.0" prefWidth="55.0">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/icons8-atualizar-30.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="selectButton" layoutX="218.0" layoutY="466.0" mnemonicParsing="false" onAction="#abrirTelaDetalhada" prefHeight="35.0" prefWidth="55.0">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/icons8-reproduzir-60.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="283.0" layoutY="466.0" mnemonicParsing="false" onAction="#fazerDelete" prefHeight="35.0" prefWidth="55.0">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/icons8-lixeira-30.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <ImageView layoutX="25.0" layoutY="20.0">
-         <image>
-            <Image url="@../assets/icons8-spotify-48.png" />
-         </image>
-      </ImageView>
-      <ChoiceBox fx:id="choiceBoxSelect" focusTraversable="false" layoutX="126.0" layoutY="122.0" pickOnBounds="false" prefHeight="25.0" prefWidth="193.0" style="-fx-border-color: white;" />
-      <Button layoutX="337.0" layoutY="119.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="48.0" prefWidth="55.0">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/icons8-adicionar-60.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Label fx:id="labelSelect" layoutX="121.0" layoutY="65.0" prefHeight="48.0" prefWidth="285.0" text="Playlist" textFill="WHITE">
+      <Pane fx:id="backgroundPane" layoutY="538.0" prefHeight="63.0" prefWidth="500.0" style="-fx-background-color: linear-gradient(to bottom,#2d2e2d,#141914);;">
+         <children>
+            <Button layoutX="65.0" layoutY="9.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons8-adicionar-60.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="168.0" layoutY="10.0" mnemonicParsing="false" onAction="#fazerDelete" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons8-lixeira-30.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="selectButton" layoutX="273.0" layoutY="10.0" mnemonicParsing="false" onAction="#abrirTelaDetalhada" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons8-reproduzir-60.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="376.0" layoutY="10.0" mnemonicParsing="false" onAction="#fazerUpdate" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons8-atualizar-30.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <ChoiceBox fx:id="choiceBoxSelect" focusTraversable="false" layoutX="130.0" layoutY="78.0" pickOnBounds="false" prefHeight="27.0" prefWidth="247.0" style="-fx-border-color: white;">
+         <padding>
+            <Insets left="20.0" />
+         </padding></ChoiceBox>
+      <Label fx:id="labelSelect" layoutX="178.0" layoutY="20.0" prefHeight="48.0" prefWidth="169.0" text="Playlist" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Pane fx:id="pane" layoutX="126.0" layoutY="194.0" prefHeight="200.0" prefWidth="200.0" />
+      <Pane fx:id="pane" layoutX="150.0" layoutY="178.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: white;" />
+      <Label fx:id="caixaArtista" layoutX="144.0" layoutY="433.0" prefHeight="34.0" prefWidth="238.0" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="caixaAlbum" layoutX="144.0" layoutY="387.0" prefHeight="34.0" prefWidth="305.0" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="71.0" fitWidth="90.0" layoutX="2.0" layoutY="8.0" preserveRatio="true">
+         <image>
+            <Image url="@../assets/SPOTIFY-LOGO.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="136.0" layoutY="89.0" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@../assets/icons8-coração-32.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

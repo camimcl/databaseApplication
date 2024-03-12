@@ -48,13 +48,22 @@ public class TelaDeCadastroController{
 
 
     private void exibirImagem(String caminhoDaImagem) {
+        pane.getChildren().clear();
         Image imagem = new Image("file:" + caminhoDaImagem);
         ImageView imageView = new ImageView(imagem);
         // Define o tamanho da ImageView conforme necessário
-        imageView.setFitWidth(150); // Defina o tamanho conforme necessário
-        imageView.setFitHeight(130); // Defina o tamanho conforme necessário
+        imageView.setFitWidth(153); // Defina o tamanho conforme necessário
+        imageView.setFitHeight(140); // Defina o tamanho conforme necessário
         // Adiciona a ImageView a um Pane na sua cena, por exemplo:
         pane.getChildren().add(imageView);
+         // Centralizar o ImageView dentro do Pane
+         imageView.layoutXProperty().bind(pane.widthProperty().subtract(imageView.fitWidthProperty()).divide(2));
+         imageView.layoutYProperty().bind(pane.heightProperty().subtract(imageView.fitHeightProperty()).divide(2));
+ 
+    }
+
+    public void voltar(ActionEvent event) throws IOException{
+        controllerPrincipal.abrirTelaSelect(event);
     }
 
     //pegar informacoes do novo cliente e mandar pro banco 

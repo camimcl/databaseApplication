@@ -44,10 +44,12 @@ public class TelaUpdateMusicaController {
         Image imagem = new Image("file:" + caminhoDaImagem);
         ImageView imageView = new ImageView(imagem);
         // Define o tamanho da ImageView conforme necessário
-        imageView.setFitWidth(150); // Defina o tamanho conforme necessário
+        imageView.setFitWidth(153); // Defina o tamanho conforme necessário
         imageView.setFitHeight(130); // Defina o tamanho conforme necessário
         // Adiciona a ImageView a um Pane na sua cena, por exemplo:
         pane.getChildren().add(imageView);
+        imageView.layoutXProperty().bind(pane.widthProperty().subtract(imageView.fitWidthProperty()).divide(2));
+        imageView.layoutYProperty().bind(pane.heightProperty().subtract(imageView.fitHeightProperty()).divide(2));
     }
 
      @FXML
@@ -60,6 +62,10 @@ public class TelaUpdateMusicaController {
             caminhoDaImagem = file.getAbsolutePath();
             exibirImagem(caminhoDaImagem);
         }
+    }
+
+    public void voltar(ActionEvent event) throws IOException{
+        controllerPrincipal.abrirTelaSelect(event);
     }
 
     //pegar as novas informacoes e passa pro banco
