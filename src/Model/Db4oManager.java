@@ -109,19 +109,6 @@ public class Db4oManager {
 
         return musicas;
     }
-    public Musicas buscarMusicaPorNome(String nome) {
-        ObjectSet<Musicas> result = objectContainer.query(new Predicate<Musicas>() {
-            @Override
-            public boolean match(Musicas musica) {
-                return musica.getName().equals(nome);
-            }
-        });
     
-        if (result.hasNext()) {
-            return result.next(); 
-        } else {
-            return null; 
-        }
-    }
 }
 

@@ -71,7 +71,6 @@ public class TelaSelectController implements Initializable {
                 if (musicaSelecionada != null) {
                     String caminhoDaImagem = musicaSelecionada.getCaminhoImagem();              
                     exibirImagem(caminhoDaImagem,musicaSelecionada);
-                    System.out.println(musicaSelecionada.getId());
                 }  
         }
     }
