@@ -71,6 +71,7 @@ public class TelaSelectController implements Initializable {
                 if (musicaSelecionada != null) {
                     String caminhoDaImagem = musicaSelecionada.getCaminhoImagem();              
                     exibirImagem(caminhoDaImagem,musicaSelecionada);
+                    System.out.println(musicaSelecionada.getId());
                 }  
         }
     }
@@ -95,22 +96,19 @@ public class TelaSelectController implements Initializable {
                switch (value) {
 
                 case 0:
-                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#e4e4de,rgb(86, 207, 195)); -fx-background-radius:25px;");
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#d34d13,rgb(179, 126, 118)); -fx-background-radius:25px;");
                     break;
                 case 1:
-                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#d34d13,rgb(179, 126, 118)); -fx-background-radius:25px;");
-                    break;
-                case 2:
                     backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#453873,#6D33A6); -fx-background-radius:25px;");
                     break;
-                case 10:
-                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#F2F2F2,#F2E422); -fx-background-radius:25px;");
+                case 2:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#e4e4de,rgb(86, 207, 195)); -fx-background-radius:25px;");
                     break;
-                case 12:
-                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#D0F2E6,#1A088C); -fx-background-radius:25px;");    
+                case 4:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#e4e4de,rgb(86, 207, 195)); -fx-background-radius:25px;");
                     break;
-                case 9:
-                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#d34d13,rgb(179, 126, 118)); -fx-background-radius:25px;");
+                case 5:
+                    backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#E31E16,#191917); -fx-background-radius:25px;");
                     break;
                 default:
                     backgroundPane.setStyle("-fx-background-color: linear-gradient(to bottom,#474746,rgb(34, 33, 32)); -fx-background-radius:25px;");
@@ -151,9 +149,6 @@ public class TelaSelectController implements Initializable {
                 inicializarMusica(musicaSelecionada);
             }
         }
-    }
-    public void voltar(ActionEvent event) throws IOException{
-        controllerPrincipal.abrirTelaSelect(event);
     }
 
     //metodo para direcionar a música selecionado para o metodo de delete
