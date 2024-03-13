@@ -15,6 +15,11 @@
     -fx-background-color:#1ed760 ;
     
 }
+.button:hover{
+    -fx-background-color:#ffffff ;
+    -fx-scale-x:1.03;
+    -fx-scale-y:1.03;
+}
 .choice-box{
     -fx-background-color: white;
     -fx-background-radius:10px;
@@ -43,6 +48,9 @@
     -fx-text-fill: #ffffff;
     -fx-font-family:"Gotham-Black";
     -fx-font-size:15px;
-    
-    
+}
+
+#backgroundPane:hover{
+    -fx-scale-x:1.03;
+    -fx-scale-y:1.03;
 }

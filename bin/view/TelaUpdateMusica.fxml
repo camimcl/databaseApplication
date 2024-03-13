@@ -59,7 +59,7 @@
             <Insets left="20.0" />
          </padding></TextField>
       <Label layoutX="47.0" layoutY="293.0" prefHeight="18.0" prefWidth="47.0" text="Album" textFill="WHITE" />
-      <Button layoutX="261.0" layoutY="413.0" mnemonicParsing="false" onAction="#fazerAtualizacao" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #1ed760; -fx-background-radius: 15px;">
+      <Button layoutX="261.0" layoutY="413.0" mnemonicParsing="false" onAction="#fazerAtualizacao" prefHeight="40.0" prefWidth="75.0" style="-fx-background-radius: 15px;">
          <font>
             <Font name="Sans Serif Collection" size="13.0" />
          </font>
@@ -75,7 +75,7 @@
          <padding>
             <Insets left="26.0" />
          </padding></TextField>
-      <Button fx:id="botaoSelecionarImagem" layoutX="361.0" layoutY="351.0" mnemonicParsing="false" onAction="#selecionarImagem" prefHeight="36.0" prefWidth="60.0" style="-fx-background-color: #1ed760; -fx-background-radius: 15px;">
+      <Button fx:id="botaoSelecionarImagem" layoutX="361.0" layoutY="351.0" mnemonicParsing="false" onAction="#selecionarImagem" prefHeight="36.0" prefWidth="60.0" style="-fx-background-radius: 15px;">
          <graphic>
             <ImageView>
                <image>
@@ -105,7 +105,7 @@
          </image>
       </ImageView>
       <Pane fx:id="pane" layoutX="299.0" layoutY="183.0" prefHeight="150.0" prefWidth="170.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: white;" />
-      <Button layoutX="158.0" layoutY="413.0" mnemonicParsing="false" onAction="#voltar" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #1ed760; -fx-background-radius: 15;" textFill="WHITE">
+      <Button layoutX="158.0" layoutY="413.0" mnemonicParsing="false" onAction="#voltar" prefHeight="40.0" prefWidth="75.0" style="-fx-background-radius: 15;" textFill="WHITE">
          <font>
             <Font name="Sans Serif Collection" size="13.0" />
          </font>

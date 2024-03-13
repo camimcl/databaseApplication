@@ -43,7 +43,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: linear-gradient(to bottom,#282928,#1b1c1b);;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaSelectController">
    <children>
-      <Pane fx:id="backgroundPane" layoutY="538.0" prefHeight="63.0" prefWidth="500.0" style="-fx-background-color: linear-gradient(to bottom,#2d2e2d,#141914);;">
+      <Pane layoutY="538.0" prefHeight="63.0" prefWidth="500.0" style="-fx-background-color: linear-gradient(to bottom,#2d2e2d,#141914);;">
          <children>
             <Button layoutX="65.0" layoutY="9.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="40.0" prefWidth="50.0">
                <graphic>
